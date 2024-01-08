@@ -1,0 +1,25 @@
+﻿@model Previsione
+
+<br />
+<button onclick="location.href='/'">Home</button>
+<h1 style="display:inline; margin-left:20px">Comune di @Model.localita</h1>
+<div style="display:flex; flex-flow:wrap" width:100%>
+    @foreach (var giorno in Model.giorni) {
+        <div style="border-color:black; border:double; margin: 5px; padding:5px; width: 600px">
+            <h4 style="text-align:center">@giorno.giorno</h4>
+            <img src="@giorno.icona"/>
+            <p style="overflow-wrap: break-word;">@giorno.testoGiorno</p>
+            <p>Temperatura minima: @giorno.tMinGiorno </p>
+            <p> Temperatura massima: @giorno.tMaxGiorno </p>
+            <div style="display:flex; flex-flow:row">
+                @foreach (var fascia in giorno.fasce) {
+                    <div style="border-color:black; border:double; margin: 5px; padding:5px">
+                        <h5>@fascia.fasciaPer @fascia.fasciaOre</h5>
+                        <img src="@fascia.icona" />
+                        <p>@fascia.descIcona</p>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>

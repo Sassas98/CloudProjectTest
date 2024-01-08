@@ -1,0 +1,13 @@
+﻿@model List<string>
+
+    <br />
+<h1>Servizio meteo di Treviso</h1>
+
+<form method="post" style="margin-top:30px">
+    <select name="city">
+        @foreach (var elemento in Model) {
+            <option value="@elemento">@elemento</option>
+        }
+    </select>
+    <input type="submit" value="Invia" />
+</form>
