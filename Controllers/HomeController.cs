@@ -21,11 +21,13 @@ namespace CloudProjectTest.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(string city) {
-            return RedirectToAction("City", new { id = city });
+        public IActionResult Index(string city) {
+            TempData["city"] = city;
+            return RedirectToAction("City");
         }
 
-        public async Task<IActionResult> City(string id) {
+        public async Task<IActionResult> City() {
+            string id = TempData["city"]?.ToString()??"";
             var data = await this._service.getCity(id.Replace("%20", " "));
             return View(data.previsione.First());
         }
